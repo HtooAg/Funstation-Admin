@@ -609,7 +609,7 @@ function HouseOfCardsInput({
 	completed,
 }: {
 	teamName: string;
-	teamTime: TeamTime;
+	teamTime: TeamTime | undefined;
 	updateTeamTime: (
 		teamName: string,
 		field: keyof TeamTime,
@@ -617,6 +617,7 @@ function HouseOfCardsInput({
 	) => void;
 	completed: boolean;
 }) {
+	if (!teamTime) return null;
 	// 1st: +60s, 2nd: +75s, 3rd: +90s
 	const positionOptions = [
 		{ label: "1st Place (+1:00 minute)", value: 1, penalty: 60 },
